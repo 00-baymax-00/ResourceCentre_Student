@@ -156,7 +156,17 @@ public class ResourceCentre {
 					chromebookList.get(i).getDueDate(),chromebookList.get(i).getOs());
 		}
 		
+
+
+		for (int i = 0; i < chromebookList.size(); i++) {
+
+			output += String.format("%-10s %-30s %-10s %-10s %-20s\n", chromebookList.get(i).getAssetTag(),
+					chromebookList.get(i).getDescription(), 
+					ResourceCentre.showAvailability(chromebookList.get(i).getIsAvailable()),
+					chromebookList.get(i).getDueDate(),chromebookList.get(i).getOs());
+		}
 		return output;
+		
 	}
 	public static void viewAllChromebook(ArrayList<Chromebook> chromebookList) {
 		
@@ -165,6 +175,7 @@ public class ResourceCentre {
 				"AVAILABLE", "DUE DATE","OPERATING SYSTEM");
 		 output += retrieveAllChromebook(chromebookList);	
 		System.out.println(output);
+		
 	}
 
 	//================================= Option 2 Add an item (CRUD - Create) =================================
@@ -185,12 +196,15 @@ public class ResourceCentre {
 	
 	public static Chromebook inputChromebook() {	
 		
+		//Chromebook cb =null;
 		// write your code here
-		String tag = Helper.readString("Enter asset tag > ");
-		String description = Helper.readString("Enter description > ");
-		String os = Helper.readString("Enter optical zoom > ");
 
-		Chromebook cb= new Chromebook(tag, description, os);
+		String tag = Helper.readString("Enter asset tag > " );
+		String description = Helper.readString("Enter description > ");
+		String os = Helper.readString("Enter operating system > ");
+		
+		Chromebook cb = new Chromebook(tag, description, os);
+		
 
 		return cb;
 		
@@ -198,6 +212,9 @@ public class ResourceCentre {
 	public static void addChromebook(ArrayList<Chromebook> chromebookList, Chromebook cb) {
 		// write your code here
 		chromebookList.add(cb);
+		
+		chromebookList.add(cb);
+		
 	}
 	
 	//================================= Option 3 Loan an item (CRUD - Update) =================================
@@ -316,8 +333,9 @@ public class ResourceCentre {
 		} else {
 			System.out.println("Chromebook " + tag + " returned");
 		}
+
+		
+	}
 	
 	}
 
-
-}
